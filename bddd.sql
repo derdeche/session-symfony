@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `module` (
   PRIMARY KEY (`id`),
   KEY `IDX_C242628BCF5E72D` (`categorie_id`),
   CONSTRAINT `FK_C242628BCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table ssymfony.module : ~3 rows (environ)
 INSERT INTO `module` (`id`, `categorie_id`, `module`) VALUES
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `programme` (
   KEY `IDX_3DDCB9FFAFC2B591` (`module_id`),
   CONSTRAINT `FK_3DDCB9FF613FECDF` FOREIGN KEY (`session_id`) REFERENCES `session` (`id`),
   CONSTRAINT `FK_3DDCB9FFAFC2B591` FOREIGN KEY (`module_id`) REFERENCES `module` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table ssymfony.programme : ~3 rows (environ)
 INSERT INTO `programme` (`id`, `session_id`, `module_id`, `nb_jour`) VALUES
@@ -114,18 +114,17 @@ CREATE TABLE IF NOT EXISTS `session` (
   `referent_id` int NOT NULL,
   `session` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nb_place` int NOT NULL,
-  `date_debut` datetime NOT NULL,
-  `date_fin` datetime NOT NULL,
+  `date_debut` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_D044D5D435E47E35` (`referent_id`),
   CONSTRAINT `FK_D044D5D435E47E35` FOREIGN KEY (`referent_id`) REFERENCES `referent` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table ssymfony.session : ~3 rows (environ)
-INSERT INTO `session` (`id`, `referent_id`, `session`, `nb_place`, `date_debut`, `date_fin`) VALUES
-	(1, 1, 'Programmation', 5, '2023-09-27 09:33:41', '2023-09-30 09:33:45'),
-	(2, 2, 'Remise à niveau', 6, '2023-08-15 09:34:31', '2023-08-20 09:34:43'),
-	(3, 1, 'Recyclage', 10, '2023-10-10 14:42:42', '2023-10-15 14:42:51');
+INSERT INTO `session` (`id`, `referent_id`, `session`, `nb_place`, `date_debut`) VALUES
+	(1, 1, 'Programmation', 5, '2023-09-27'),
+	(2, 2, 'Remise à niveau', 6, '2023-08-15'),
+	(3, 1, 'Recyclage', 10, '2023-10-10');
 
 -- Listage de la structure de table ssymfony. session_stagiaire
 CREATE TABLE IF NOT EXISTS `session_stagiaire` (
