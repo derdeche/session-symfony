@@ -21,7 +21,7 @@ class Referent
     #[ORM\Column(length: 50)]
     private ?string $prenomReferent = null;
 
-    #[ORM\OneToMany(mappedBy: 'referent', targetEntity: session::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'referent', targetEntity: Session::class, orphanRemoval: true)]
     private Collection $sessions;
 
     public function __construct()
