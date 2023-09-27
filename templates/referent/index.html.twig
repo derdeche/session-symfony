@@ -1,7 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ReferentController!{% endblock %}
+{% block title %}Hello Referent{% endblock %}
 
 {% block body %}
+
+
+<h1>Liste des Réferents</h1>
+
+  
+
+     {% for element in listes %}
+        <li>{{ element.nomReferent ~ ' '~ element.prenomReferent }}</li>
+        {# {{dump(element)}} #}
+        
+    {% endfor %} 
+
+
 
 {% endblock %}
