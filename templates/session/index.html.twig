@@ -6,7 +6,21 @@
 
 <h1>Liste des Sessions</h1>
 
+ afficher la liste des sessions 
 
+ 
+    {% for session in sessions %}
+        <li>{{ session.session ~ '' ~ session.dateDebut }}</li>
+        
+        
+        {# {{dump(session)}}; #}
+    {% endfor %} 
+
+    {% for module in module %}
+        
+        <li>{{ module.module }}</li>
+        
+    {% endfor %} 
 
 
 {% endblock %}
