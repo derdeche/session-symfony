@@ -31,7 +31,7 @@ class Session
     #[ORM\OneToMany(mappedBy: 'session', targetEntity: Programme::class, orphanRemoval: true)]
     private Collection $programmes;
 
-    #[ORM\ManyToMany(targetEntity: stagiaire::class, inversedBy: 'sessions')]
+    #[ORM\ManyToMany(targetEntity: Stagiaire::class, inversedBy: 'sessions')]
     private Collection $stagiaires;
 
     #[ORM\ManyToOne(inversedBy: 'sessions')]
