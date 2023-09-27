@@ -4,4 +4,14 @@
 
 {% block body %}
 
+<h1>Liste des stagiaire</h1>
+
+ 
+    {% for stagiaire in stagiaire %}
+
+        <li>{{ stagiaire.prenom ~ ' ' ~  stagiaire.nom }} </li>
+        
+        
+        
+    {% endfor %} 
 {% endblock %}
