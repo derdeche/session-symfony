@@ -2,17 +2,31 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Referent;
+use App\Repository\ReferentRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ReferentController extends AbstractController
 {
     #[Route('/referent', name: 'app_referent')]
-    public function index(): Response
+       
+    
+
+    public function index(EntityManagerInterface $entityManager): Response
     {
+        $referents = $entityManager->getRepository(Referent::class)->findAll();
+        
         return $this->render('referent/index.html.twig', [
-            'controller_name' => 'ReferentController',
+            'listes' => $referents,
         ]);
+
     }
+
+
+
+
 }
+
