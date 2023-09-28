@@ -25,8 +25,7 @@ class Stagiaire
     #[ORM\Column(length: 50)]
     private ?string $ville = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $dateNaissance = null;
+ 
 
     #[ORM\Column(length: 50)]
     private ?string $telephone = null;
@@ -36,6 +35,9 @@ class Stagiaire
 
     #[ORM\ManyToMany(targetEntity: Session::class, mappedBy: 'stagiaires')]
     private Collection $sessions;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $dateNaissance = null;
 
     public function __construct()
     {
@@ -83,17 +85,7 @@ class Stagiaire
         return $this;
     }
 
-    public function getDateNaissance(): ?\DateTimeInterface
-    {
-        return $this->dateNaissance;
-    }
-
-    public function setDateNaissance(\DateTimeInterface $dateNaissance): static
-    {
-        $this->dateNaissance = $dateNaissance;
-
-        return $this;
-    }
+  
 
     public function getTelephone(): ?string
     {
@@ -142,6 +134,18 @@ class Stagiaire
         if ($this->sessions->removeElement($session)) {
             $session->removeStagiaire($this);
         }
+
+        return $this;
+    }
+
+    public function getDateNaissance(): ?\DateTimeInterface
+    {
+        return $this->dateNaissance;
+    }
+
+    public function setDateNaissance(\DateTimeInterface $dateNaissance): static
+    {
+        $this->dateNaissance = $dateNaissance;
 
         return $this;
     }

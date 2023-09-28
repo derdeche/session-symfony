@@ -10,17 +10,17 @@
 
  
     {% for session in sessions %}
-        <li>{{ session.session ~ '' ~ session.dateDebut }}</li>
+        <li>{{ session.session  }}</li>
         
         
         {# {{dump(session)}}; #}
-    {% endfor %} 
+    {# {% endfor %} 
 
     {% for module in module %}
         
         <li>{{ module.module }}</li>
         
-    {% endfor %} 
+    {% endfor %}  #}
 
 
 {% endblock %}

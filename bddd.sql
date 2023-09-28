@@ -16,7 +16,7 @@
 
 
 -- Listage de la structure de la base pour ssymfony
-CREATE DATABASE IF NOT EXISTS `ssymfony` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `ssymfony` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `ssymfony`;
 
 -- Listage de la structure de table ssymfony. categorie
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int NOT NULL AUTO_INCREMENT,
   `categorie` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table ssymfony.categorie : ~2 rows (environ)
 INSERT INTO `categorie` (`id`, `categorie`) VALUES
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
 
 -- Listage des données de la table ssymfony.doctrine_migration_versions : ~1 rows (environ)
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-	('DoctrineMigrations\\Version20230926081905', '2023-09-27 07:24:19', 433);
+	('DoctrineMigrations\\Version20230928083651', '2023-09-28 08:37:13', 349);
 
 -- Listage de la structure de table ssymfony. messenger_messages
 CREATE TABLE IF NOT EXISTS `messenger_messages` (
@@ -68,11 +68,11 @@ CREATE TABLE IF NOT EXISTS `module` (
   PRIMARY KEY (`id`),
   KEY `IDX_C242628BCF5E72D` (`categorie_id`),
   CONSTRAINT `FK_C242628BCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table ssymfony.module : ~3 rows (environ)
 INSERT INTO `module` (`id`, `categorie_id`, `module`) VALUES
-	(1, 2, 'word'),
+	(1, 2, 'Word'),
 	(2, 1, 'Php'),
 	(3, 1, 'Html');
 
@@ -87,13 +87,13 @@ CREATE TABLE IF NOT EXISTS `programme` (
   KEY `IDX_3DDCB9FFAFC2B591` (`module_id`),
   CONSTRAINT `FK_3DDCB9FF613FECDF` FOREIGN KEY (`session_id`) REFERENCES `session` (`id`),
   CONSTRAINT `FK_3DDCB9FFAFC2B591` FOREIGN KEY (`module_id`) REFERENCES `module` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table ssymfony.programme : ~3 rows (environ)
 INSERT INTO `programme` (`id`, `session_id`, `module_id`, `nb_jour`) VALUES
 	(1, 2, 1, 5),
 	(2, 1, 2, 3),
-	(3, 3, 3, 5);
+	(3, 3, 3, 10);
 
 -- Listage de la structure de table ssymfony. referent
 CREATE TABLE IF NOT EXISTS `referent` (
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `referent` (
   `nom_referent` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prenom_referent` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table ssymfony.referent : ~2 rows (environ)
 INSERT INTO `referent` (`id`, `nom_referent`, `prenom_referent`) VALUES
@@ -115,16 +115,17 @@ CREATE TABLE IF NOT EXISTS `session` (
   `session` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nb_place` int NOT NULL,
   `date_debut` date NOT NULL,
+  `date_fin` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_D044D5D435E47E35` (`referent_id`),
   CONSTRAINT `FK_D044D5D435E47E35` FOREIGN KEY (`referent_id`) REFERENCES `referent` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table ssymfony.session : ~3 rows (environ)
-INSERT INTO `session` (`id`, `referent_id`, `session`, `nb_place`, `date_debut`) VALUES
-	(1, 1, 'Programmation', 5, '2023-09-27'),
-	(2, 2, 'Remise à niveau', 6, '2023-08-15'),
-	(3, 1, 'Recyclage', 10, '2023-10-10');
+INSERT INTO `session` (`id`, `referent_id`, `session`, `nb_place`, `date_debut`, `date_fin`) VALUES
+	(1, 1, 'Programmation', 5, '2023-09-25', '2023-09-30'),
+	(2, 2, 'Remise à niveau', 6, '2023-09-20', '2023-09-23'),
+	(3, 1, 'Recyclage', 10, '2023-08-10', '2023-08-20');
 
 -- Listage de la structure de table ssymfony. session_stagiaire
 CREATE TABLE IF NOT EXISTS `session_stagiaire` (
@@ -137,12 +138,11 @@ CREATE TABLE IF NOT EXISTS `session_stagiaire` (
   CONSTRAINT `FK_C80B23BBBA93DD6` FOREIGN KEY (`stagiaire_id`) REFERENCES `stagiaire` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table ssymfony.session_stagiaire : ~5 rows (environ)
+-- Listage des données de la table ssymfony.session_stagiaire : ~4 rows (environ)
 INSERT INTO `session_stagiaire` (`session_id`, `stagiaire_id`) VALUES
 	(1, 1),
-	(1, 4),
+	(1, 3),
 	(2, 2),
-	(3, 1),
 	(3, 3);
 
 -- Listage de la structure de table ssymfony. stagiaire
@@ -151,18 +151,18 @@ CREATE TABLE IF NOT EXISTS `stagiaire` (
   `nom` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prenom` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ville` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date_naissance` datetime NOT NULL,
+  `date_naissance` date NOT NULL,
   `telephone` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `courriel` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table ssymfony.stagiaire : ~4 rows (environ)
 INSERT INTO `stagiaire` (`id`, `nom`, `prenom`, `ville`, `date_naissance`, `telephone`, `courriel`) VALUES
-	(1, 'DERDECHE', 'Foued', 'strasbourg', '1984-09-27 09:26:36', '0102030405', 'foued@gmail.com'),
-	(2, 'SUCU', 'Cemil', 'Strasbourg', '1990-09-13 09:27:39', '0605425963', 'cemil@gmail.com'),
-	(3, 'CHAMAEV', 'Mansour', 'strasbourg', '1995-09-27 09:29:17', '0750563269', 'mansour@gmail.com'),
-	(4, 'BAISANGOUR', 'Aliev', 'Illkirch', '1996-05-03 09:31:42', '0650203020', 'aliev@gmail.com');
+	(1, 'DERDECHE', 'Foued', 'STRASBOURG', '1984-04-13', '0605020365', 'foued@gmail.com'),
+	(2, 'SUCU', 'Cemil', 'STRASBOURG', '1980-05-23', '0506040508', 'cemil@gmail.com'),
+	(3, 'CHAMAEV', 'Mansour', 'STRASBOURG', '1990-12-23', '0605040908', 'mansour@gmail.com'),
+	(4, 'BAISANGOUR', 'Aliev', 'ILLKIRCH', '1995-12-25', '0750563269', 'aliev@gmail.com');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
