@@ -1,7 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProgrammeController!{% endblock %}
+{% block title %}Liste des Programmes{% endblock %}
 
 {% block body %}
+<h1>Liste des programmes</h1>
+<table border="5">
 
-{% endblock %}
+    <thead>
+        <tr> 
+            <th>Programme</th>
+            <th>Session </th>
+            <th>Nombre de jours</th>
+            
+        </tr>
+    </thead>
+    {% for programme in programmes %}
+        <tbody >
+            <tr>
+                <td><a href="{{ path('show_programme', {'id': programme.id}) }}">{{ programme.Id }}</a></td>
+                <td>{{ programme.session.session  }}</td>          
+                <td>{{ programme.nbJour }}</td>          
+                {# <td>{{ element.module.module  }}</td>          
+                <td>{{ element.module.categorie.categorie }}</td> #}
+                
+            </tr>
+        </tbody>
+
+        {% endfor %}
+    </table>
+
+    {% endblock %}
+    
+    {# <td> 
+        <a href="{{ path('session_show', {'id': session.id}) }}">show</a>
+        <a href="{{ path('session_edit', {'id': session.id}) }}">edit</a>
+    </td> #}
