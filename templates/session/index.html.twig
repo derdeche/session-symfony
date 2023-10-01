@@ -1,26 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello Session{% endblock %}
+{% block title %}Liste des Sessions{% endblock %}
 
 {% block body %}
 
 <h1>Liste des Sessions</h1>
 
- afficher la liste des sessions 
-
  
-    {% for session in sessions %}
-        <li>{{ session.session  }}</li>
-        
-        
-        {# {{dump(session)}}; #}
-    {# {% endfor %} 
 
-    {% for module in module %}
-        
-        <li>{{ module.module }}</li>
-        
-    {% endfor %}  #}
+ <table border="5">
+    <thead>
+        <tr>
+
+            <th>N°</th>
+            <th>Session</th>
+            <th>Nombre de stagiaires inscrits</th>
+            <th>Nombre de places restants</th>
+            <th>Programmes</th>
+           
+                    
+        </tr>
+    </thead>
+    <tbody>
+        {% for session in session %}
+            <tr>
+                <td>{{ session.Id }}</td>
+                <td><a href="{{ path('show_session', {'id': session.id}) }}">{{ session.session  }}</a></td>          
+                <td>{{ session.stagiaires|length }}</td> 
+                <td>{{ session.nbPlace  - session.stagiaires|length}}</td>
+                <td>{{ session.programmes|length}}</td>
+            </tr>
+
+        {% endfor %}
+
+    
+
+    </table>
 
 
 {% endblock %}
