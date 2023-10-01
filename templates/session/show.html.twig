@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de la session{% endblock %}
+
+{% block body %}
+<h1>Détail de la session :</h1>
+<h2>{{session.session}}</h2>
+
+<table border="5">
+
+   
+        <thead>
+            <tr> 
+                <th>N°</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Nombre de place</th>
+                <th>Nom du réferent</th>
+                <th>Prenom du réferent</th>
+                <th>Stagiaires inscrits</th>
+        
+            </tr>
+        </thead>
+        <tbody >
+            <tr>
+                <td>{{ session.Id }}</td>
+                <td>{{ session.dateDebut|date("d/m/Y") }}</td>
+                <td>{{ session.dateFin|date("d/m/Y") }}</td>
+                <td>{{ session.nbPlace }}</td>
+                <td>{{session.referent.nomReferent }}</td>
+                <td>{{ session.referent.prenomReferent }}</td>
+                {% for stagiaire in session.stagiaires %}
+                    <td>{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }}</td>
+                {% endfor %}
+            </tr>
+                
+            
+        </tbody>
+        
+        
+    </table>
+    {% endblock %}
+
+
