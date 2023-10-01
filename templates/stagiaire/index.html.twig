@@ -1,17 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StagiaireController!{% endblock %}
+{% block title %}Liste des Stagiaires{% endblock %}
 
 {% block body %}
+<h1>Liste des Stagiaires</h1>
+<table border="5">
 
-<h1>Liste des stagiaire</h1>
-
- 
+    <thead>
+        <tr> 
+            <th>N°</th>
+            <th>Prenom </th>
+            <th>Nom </th>
+            {# <th>Nombre de jours</th> #}
+            
+        </tr>
+    </thead>
     {% for stagiaire in stagiaire %}
+        <tbody >
+            <tr>
+                <td>{{ stagiaire.Id }}</a></td>
+                <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}">{{ stagiaire.prenom  }}</a></td>          
+                <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}">{{ stagiaire.nom  }}</a></td>          
+                {# <td>{{ programme.nbJour }}</td>           
+                <td>{{ element.module.module  }}</td>          
+                <td>{{ element.module.categorie.categorie }}</td>
+                 #}
+            </tr>
+        </tbody>
 
-        <li>{{ stagiaire.prenom ~ ' ' ~  stagiaire.nom }} </li>
-        
-        
-        
-    {% endfor %} 
-{% endblock %}
+        {% endfor %}
+    </table>
+
+    {% endblock %}
