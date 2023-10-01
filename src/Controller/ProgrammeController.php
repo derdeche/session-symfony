@@ -1,18 +1,31 @@
 <?php
 
 namespace App\Controller;
-
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Programme;
+use App\Repository\ProgrammeRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProgrammeController extends AbstractController
 {
     #[Route('/programme', name: 'app_programme')]
-    public function index(): Response
+    public function index(ProgrammeRepository $programmeRepository): Response
     {
+        $programmes = $programmeRepository->findAll();
         return $this->render('programme/index.html.twig', [
-            'controller_name' => 'ProgrammeController',
+            'programmes' => $programmes,
         ]);
+    }
+
+    #[Route('/programme/{id}', name: 'show_programme')]
+    public function show(Programme $programme):Response
+
+    {
+        
+        return $this->render('programme/show.html.twig', [
+            'programme' => $programme,
+                      
+         ]);
     }
 }
