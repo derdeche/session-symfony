@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du programme{% endblock %}
+
+{% block body %}
+<h1>Détail du :</h1>
+<h2>Programme N° : {{programme.id}}</h2>
+
+<table border="5">
+
+   
+        <thead>
+            <tr> 
+                <th>N°</th>
+                <th>DModule</th>
+                <th>Catégorie</th>
+                <th>Prenom du Réferent</th>
+                <th>Nom du réferent</th>
+                 
+        
+            </tr>
+        </thead>
+        <tbody >
+            <tr>
+                <td>{{ programme.Id }}</td>
+                {# <td>{{ programme.dateDebut|date("d/m/Y") }}</td>
+                <td>{{ session.dateFin|date("d/m/Y") }}</td> #}
+                <td>{{ programme.module.module }}</td>
+                <td>{{programme.module.categorie.categorie }}</td>
+                <td>{{ programme.session.referent.prenomReferent }}</td>
+                <td>{{ programme.session.referent.nomReferent }}</td>
+                    
+            </tr>
+        </tbody>
+
+    
+</table>
+    
+
+{% endblock %}
