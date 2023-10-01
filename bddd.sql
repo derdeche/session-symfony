@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
--- Listage des données de la table ssymfony.doctrine_migration_versions : ~1 rows (environ)
+-- Listage des données de la table ssymfony.doctrine_migration_versions : ~0 rows (environ)
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 	('DoctrineMigrations\\Version20230928083651', '2023-09-28 08:37:13', 349);
 
@@ -70,11 +70,12 @@ CREATE TABLE IF NOT EXISTS `module` (
   CONSTRAINT `FK_C242628BCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table ssymfony.module : ~3 rows (environ)
+-- Listage des données de la table ssymfony.module : ~2 rows (environ)
 INSERT INTO `module` (`id`, `categorie_id`, `module`) VALUES
 	(1, 2, 'Word'),
 	(2, 1, 'Php'),
-	(3, 1, 'Html');
+	(3, 1, 'Html'),
+	(4, 1, 'Css');
 
 -- Listage de la structure de table ssymfony. programme
 CREATE TABLE IF NOT EXISTS `programme` (
@@ -89,11 +90,12 @@ CREATE TABLE IF NOT EXISTS `programme` (
   CONSTRAINT `FK_3DDCB9FFAFC2B591` FOREIGN KEY (`module_id`) REFERENCES `module` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table ssymfony.programme : ~3 rows (environ)
+-- Listage des données de la table ssymfony.programme : ~4 rows (environ)
 INSERT INTO `programme` (`id`, `session_id`, `module_id`, `nb_jour`) VALUES
 	(1, 2, 1, 5),
 	(2, 1, 2, 3),
-	(3, 3, 3, 10);
+	(3, 3, 3, 10),
+	(4, 1, 4, 3);
 
 -- Listage de la structure de table ssymfony. referent
 CREATE TABLE IF NOT EXISTS `referent` (
@@ -123,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `session` (
 
 -- Listage des données de la table ssymfony.session : ~3 rows (environ)
 INSERT INTO `session` (`id`, `referent_id`, `session`, `nb_place`, `date_debut`, `date_fin`) VALUES
-	(1, 1, 'Programmation', 5, '2023-09-25', '2023-09-30'),
+	(1, 1, 'Programmation', 5, '2023-09-24', '2023-09-30'),
 	(2, 2, 'Remise à niveau', 6, '2023-09-20', '2023-09-23'),
 	(3, 1, 'Recyclage', 10, '2023-08-10', '2023-08-20');
 
