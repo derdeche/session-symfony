@@ -37,15 +37,8 @@ class Session
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateFin = null;
-
-   
-   
-
     
-
-    
-
-   
+ 
 
     public function __construct()
     {
@@ -78,6 +71,30 @@ class Session
     public function setNbPlace(int $nbPlace): static
     {
         $this->nbPlace = $nbPlace;
+
+        return $this;
+    }
+    
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->dateDebut;
+    }
+
+    public function setDateDebut(\DateTimeInterface $dateDebut): static
+    {
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin(\DateTimeInterface $dateFin): static
+    {
+        $this->dateFin = $dateFin;
 
         return $this;
     }
@@ -148,29 +165,11 @@ class Session
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
+    public function __toString()
     {
-        return $this->dateDebut;
+        return $this->session.session;
     }
 
-    public function setDateDebut(\DateTimeInterface $dateDebut): static
-    {
-        $this->dateDebut = $dateDebut;
-
-        return $this;
-    }
-
-    public function getDateFin(): ?\DateTimeInterface
-    {
-        return $this->dateFin;
-    }
-
-    public function setDateFin(\DateTimeInterface $dateFin): static
-    {
-        $this->dateFin = $dateFin;
-
-        return $this;
-    }
 
     
 
