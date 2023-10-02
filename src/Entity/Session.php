@@ -167,7 +167,7 @@ class Session
 
     public function __toString()
     {
-        return $this->session.session;
+        return $this->session;
     }
 
 
