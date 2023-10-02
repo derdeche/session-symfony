@@ -26,7 +26,8 @@
         {% for session in session %}
             <tr>
                 <td>{{ session.Id }}</td>
-                <td><a href="{{ path('show_session', {'id': session.id}) }}">{{ session.session  }}</a></td>          
+                <td><a href="{{ path('show_session', {'id': session.id}) }}">{{ session.session  }}</a>
+                <a class ="Edit" href="{{ path('edit_session', {'id': session.id})}}">Edit</a></td>          
                 <td>{{ session.nbPlace }}</td> 
                 <td>{{ session.stagiaires|length }}</td> 
                 <td>{{ session.nbPlace  - session.stagiaires|length}}</td>
