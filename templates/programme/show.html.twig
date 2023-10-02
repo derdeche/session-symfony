@@ -12,7 +12,7 @@
         <thead>
             <tr> 
                 <th>N°</th>
-                <th>DModule</th>
+                <th>Module</th>
                 <th>Catégorie</th>
                 <th>Prenom du Réferent</th>
                 <th>Nom du réferent</th>
@@ -23,8 +23,6 @@
         <tbody >
             <tr>
                 <td>{{ programme.Id }}</td>
-                {# <td>{{ programme.dateDebut|date("d/m/Y") }}</td>
-                <td>{{ session.dateFin|date("d/m/Y") }}</td> #}
                 <td>{{ programme.module.module }}</td>
                 <td>{{programme.module.categorie.categorie }}</td>
                 <td>{{ programme.session.referent.prenomReferent }}</td>
