@@ -20,15 +20,18 @@
             <tr>
                 <td>{{ stagiaire.Id }}</a></td>
                 <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}">{{ stagiaire.prenom  }}</a></td>          
-                <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}">{{ stagiaire.nom  }}</a></td>          
+                <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}">{{ stagiaire.nom  }}</a></td> 
                 {# <td>{{ programme.nbJour }}</td>           
                 <td>{{ element.module.module  }}</td>          
                 <td>{{ element.module.categorie.categorie }}</td>
-                 #}
+                #}
             </tr>
         </tbody>
-
+        
         {% endfor %}
+        {# {% for session in session.stagiaires %}
+            <td>{{ session.session  }}</td>
+        {% endfor %}          #}
     </table>
 
     {% endblock %}
