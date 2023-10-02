@@ -4,12 +4,14 @@ namespace App\Controller;
 
 
 use App\Entity\Session;
-use App\Entity\Referent;
+
 use App\Entity\Programme;
-use App\Entity\Stagiaire;
+// use App\Entity\Stagiaire;
+use App\Form\SessionType;
 use App\Repository\SessionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -33,6 +35,19 @@ class SessionController extends AbstractController
         ]);
     }
 
+    #[Route('/session/new', name: 'new_session')]
+    public function new(Request $request): Response
+    {
+        $session = new Session();
+       
+
+        $form = $this->createForm(SessionType::class, $session);
+
+        return $this->render('session/new.html.twig', [
+            'formAddSession' => $form,
+        ]);
+    } 
+
     #[Route('/session/{id}', name: 'show_session')]
     public function show(Session $session):Response
 
@@ -43,6 +58,7 @@ class SessionController extends AbstractController
                       
          ]);
     }
+
 
 
   
