@@ -36,15 +36,32 @@ class SessionController extends AbstractController
     }
 
     #[Route('/session/new', name: 'new_session')]
-    public function new(Request $request): Response
+    #[Route('/session/{id}/edit', name: 'edit_session')]
+    public function new_edit(Session $session = null , Request $request , EntityManagerInterface $entityManager): Response
     {
+        if(!$session){
         $session = new Session();
-       
-
+        }
+        
         $form = $this->createForm(SessionType::class, $session);
+       
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $session = $form->getData();
+            // prepare PDO
+            $entityManager->persist($session);
+            //execute PDO  
+            $entityManager->flush();
+
+           
+
+            return $this->redirectToRoute('app_session');
+        }
 
         return $this->render('session/new.html.twig', [
             'formAddSession' => $form,
+            
         ]);
     } 
 
