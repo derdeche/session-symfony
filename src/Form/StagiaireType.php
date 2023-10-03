@@ -22,7 +22,11 @@ class StagiaireType extends AbstractType
             ->add('ville',TextType::class)
             ->add('telephone',TextType::class)
             ->add('courriel',TextType::class)
-            ->add('dateNaissance',DateType::class)
+            ->add('dateNaissance',DateType::class
+            ,[
+                'widget'=>'single_text',
+                'format'=>'yyyy-MM-dd',
+            ])
             ->add('sessions',EntityType::class
             ,[
                 'class'=>Session::class,
