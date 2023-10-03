@@ -56,6 +56,25 @@
             </tbody>
     </table>
 
+    {# tableau liste des stagiaires noninscrits  #}
+   <h2>Stagiaires non inscrits</h2>
+   <table >
+ 
+           <tbody>
+               {% if session.stagiaires | length >0 %}
+               {% for s in nonInscrit %}
+                      
+          
+                                               
+                       <td><a href="{{path('show_stagiaire', {'id': s.id})}}">{{ s.prenom ~ ' ' ~ s.nom}}</a></td>
+                                               
+                   {% endfor %}
+                       {% else %}
+                       <td>aucun stagiaire </td>
+               {% endif %}
+           </tbody>
+   </table>
+
 {# Modules #}
     <h2>Modules et catégories</h2>
     <table >
@@ -84,6 +103,7 @@
         </tbody>
     </table>
 
+  
 
     {% endblock %}
 
