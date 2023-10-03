@@ -21,8 +21,16 @@ class SessionType extends AbstractType
         $builder
             ->add('session', TextType::class )
             ->add('nbPlace', NumberType::class)
-            ->add('dateDebut', DateType::class)
-            ->add('dateFin', DateType::class)
+            ->add('dateDebut', DateType::class
+            ,[
+                'widget'=>'single_text',
+                'format'=>'yyyy-MM-dd',
+            ])
+            ->add('dateFin', DateType::class
+            ,[
+                'widget'=>'single_text',
+                'format'=>'yyyy-MM-dd',
+            ])
             ->add('stagiaires',EntityType::class
             ,[
                 'class'=>Stagiaire::class,
