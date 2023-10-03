@@ -11,6 +11,8 @@
 
     </head>
     <body>
+        
+        {% if app.user %}
         <nav>
             <ul>
                 <li><a href="{{ path('app_session') }}">Liste des Sessions</a></li>
@@ -18,11 +20,16 @@
                 <li><a href="{{ path('app_stagiaire') }}">Liste des Stagiaires</a></li>
                 <li><a href="{{ path('new_session') }}">Ajouter une session</a></li>
                 <li><a href="{{ path('new_stagiaire') }}">Ajouter un stagiaire</a></li>
+                <li><a href="{{ path('app_logout') }}">Logout</a></li>
+                
                 
             </ul>
         </nav>
-        
-        
+        {% else %}
+        <p class="connection">Veuillez vous connecter </p>
+            <li><a href="{{ path('app_login') }}"></a></li>
+        {% endif %}
+
         
         
         
