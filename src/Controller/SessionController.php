@@ -19,6 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SessionController extends AbstractController
 {
+    // affichage de tous les sessions
     #[Route('/session', name: 'app_session')]
     
     // public function index(EntityManagerInterface $entityManager): Response
@@ -35,6 +36,7 @@ class SessionController extends AbstractController
         ]);
     }
 
+    // affichage details session + modif session
     #[Route('/session/new', name: 'new_session')]
     #[Route('/session/{id}/edit', name: 'edit_session')]
     public function new_edit(Session $session = null , Request $request , EntityManagerInterface $entityManager): Response
@@ -65,6 +67,7 @@ class SessionController extends AbstractController
         ]);
     } 
 
+    // supprimer session
     #[Route('/session/{id}/delete', name: 'delete_session')]
     
         public function delete(Session $session , EntityManagerInterface $entityManager): Response
@@ -76,7 +79,7 @@ class SessionController extends AbstractController
     
 
 
-
+        // affichage d'un session details
     #[Route('/session/{id}', name: 'show_session')]
     public function show(Session $session):Response
 
