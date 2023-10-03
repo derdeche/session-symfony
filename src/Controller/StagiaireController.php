@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class StagiaireController extends AbstractController
 {
+    // affichage de tous les stagiaires
     #[Route('/stagiaire', name: 'app_stagiaire')]
     public function index(StagiaireRepository $stagiaireRepository): Response
     {
@@ -23,6 +24,7 @@ class StagiaireController extends AbstractController
         ]);
     }
 
+    // affichage details stagiaire + modif stagiaire
     #[Route('/stagiaire/new', name: 'new_stagiaire')]
     public function new(Request $request ,  EntityManagerInterface $entityManager): Response
     {
@@ -50,6 +52,7 @@ class StagiaireController extends AbstractController
         ]);
     }  
 
+    // affichage details stagiaire + delete stagiaire
     #[Route('/stagiaire/{id}/delete', name: 'delete_stagiaire')]
     
     public function delete(Stagiaire $stagiaire , EntityManagerInterface $entityManager): Response
