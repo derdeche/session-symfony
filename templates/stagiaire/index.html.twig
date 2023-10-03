@@ -4,14 +4,14 @@
 
 {% block body %}
 <h1>Liste des Stagiaires</h1>
-<table border="5">
+<table >
 
     <thead>
         <tr> 
             <th>N°</th>
             <th>Prenom </th>
             <th>Nom </th>
-            {# <th>Nombre de jours</th> #}
+            <th>Action</th>
             
         </tr>
     </thead>
@@ -20,7 +20,8 @@
             <tr>
                 <td>{{ stagiaire.Id }}</a></td>
                 <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}">{{ stagiaire.prenom  }}</a></td>          
-                <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}">{{ stagiaire.nom  }}</a></td> 
+                <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}">{{ stagiaire.nom  }}</a></td>
+                <td><a class = "supp" href="{{ path ('delete_stagiaire', {'id': stagiaire.id})}}">Supprimer</a></td> 
                 {# <td>{{ programme.nbJour }}</td>           
                 <td>{{ element.module.module  }}</td>          
                 <td>{{ element.module.categorie.categorie }}</td>
