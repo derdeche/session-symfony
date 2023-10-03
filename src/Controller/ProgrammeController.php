@@ -10,7 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProgrammeController extends AbstractController
-{
+{   
+    // affichage de tous les programmes
     #[Route('/programme', name: 'app_programme')]
     public function index(ProgrammeRepository $programmeRepository): Response
     {
@@ -19,7 +20,7 @@ class ProgrammeController extends AbstractController
             'programmes' => $programmes,
         ]);
     }
-
+    // affichage d'un programme details
     #[Route('/programme/{id}', name: 'show_programme')]
     public function show(Programme $programme):Response
 
