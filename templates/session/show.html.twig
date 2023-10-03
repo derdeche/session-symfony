@@ -3,6 +3,7 @@
 {% block title %}Détail de la session{% endblock %}
 
 {% block body %}
+{# tableau session details #}
 <h1>Détail de la session :</h1>
 <h2>{{session.session}}</h2>
 
@@ -41,9 +42,7 @@
    {# tableau liste des stagiaires inscrits  #}
    <h2>Stagiaires inscrits</h2>
     <table >
-
-   
-        
+  
             <tbody>
                 {% if session.stagiaires | length >0 %}
                     {% for stagiaire in session.stagiaires %}
