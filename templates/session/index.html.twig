@@ -27,7 +27,9 @@
             <tr>
                 <td>{{ session.Id }}</td>
                 <td><a href="{{ path('show_session', {'id': session.id}) }}">{{ session.session  }}</a>
-                <a class ="Edit" href="{{ path('edit_session', {'id': session.id})}}">Edit</a></td>          
+                <a class ="Edit" href="{{ path('edit_session', {'id': session.id})}}">Edit</a>
+                <a class="add" href="{{ path ('new_session')}}">Ajouter</a>
+                <a class "supp" href="{{ path ('delete_session', {'id': session.id})}}">Supprimer</a></td>          
                 <td>{{ session.nbPlace }}</td> 
                 <td>{{ session.stagiaires|length }}</td> 
                 <td>{{ session.nbPlace  - session.stagiaires|length}}</td>
