@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ReferentController extends AbstractController
 {
+    // affichage de tous les referents
     #[Route('/referent', name: 'app_referent')]
        
     
