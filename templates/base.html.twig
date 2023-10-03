@@ -11,7 +11,7 @@
 
     </head>
     <body>
-        
+        {# si l'utilisateur et connecté #}
         {% if app.user %}
         <nav>
             <ul>
@@ -25,6 +25,7 @@
                 
             </ul>
         </nav>
+        {# sinon redirection vers page connextion #}
         {% else %}
         <p class="connection">Veuillez vous connecter </p>
             <li><a href="{{ path('app_login') }}"></a></li>
