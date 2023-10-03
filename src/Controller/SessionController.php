@@ -27,7 +27,7 @@ class SessionController extends AbstractController
     {
         // $sessions = $entityManager->getRepository(Session::class)->findAll();
         $session = $sessionRepository->findBy([],["dateDebut"=>"DESC"]);
-          
+        
              
         
         return $this->render('session/index.html.twig', [
@@ -81,12 +81,13 @@ class SessionController extends AbstractController
 
         // affichage d'un session details
     #[Route('/session/{id}', name: 'show_session')]
-    public function show(Session $session):Response
+    public function show(Session $session, SessionRepository $sessionRepository):Response
 
     {
-               
+        $nonInscrit= $sessionRepository->findNonInscrits($session->getId());   
         return $this->render('session/show.html.twig', [
             'session' => $session,
+            'nonInscrit' => $nonInscrit,
                       
          ]);
     }
