@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ModuleController extends AbstractController
 {
+    // affichage de tous les modules
     #[Route('/module', name: 'app_module')]
     public function index(): Response
     {
